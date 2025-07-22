@@ -32,7 +32,6 @@ function addLeadingZero(value) {
 
 const buttonEl = document.querySelector("button");
 buttonEl.disabled = true; 
-const inputEl =  document.querySelector("#datetime-picker")
 const daysEl = document.querySelector('[data-days]');
 const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
@@ -61,17 +60,17 @@ const options = {
 };
 
 
-const calendarEl = flatpickr(inputEl, options)
+const calendarEl = flatpickr("#datetime-picker", options)
 
 const onClick = e => {
     buttonEl.disabled = true;
-    inputEl.disabled = true;
+    calendarEl._input.disabled = true;
     const intervalId = setInterval(() => {
     let timeRemaining = userSelectedDate.getTime() - Date.now();
     let { days, hours, minutes, seconds } = convertMs(timeRemaining);
     if (timeRemaining <= 0) {
         clearInterval(intervalId);
-        inputEl.disabled = false;
+        calendarEl._input.disabled = false;
     } else {
       daysEl.innerText = addLeadingZero(days);
       hoursEl.innerText = addLeadingZero(hours);
