@@ -23,7 +23,7 @@ input:focus {
 }
 input:disabled {
   border-color: #808080;
-  background: #808080;
+  background: #fafafa;
   color: #808080;
 }
 button {
